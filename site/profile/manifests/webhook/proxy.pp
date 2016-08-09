@@ -50,19 +50,27 @@ class profile::webhook::proxy (
       location_custom_cfg => { 'return' => '404' },
   }
 
-  profile::webhook::endpoint {
-    'https://jenkins.ops.puppetlabs.net/github-webhook/': ;
-    'https://jenkins-beaker.delivery.puppetlabs.net/github-webhook/': ;
-    'https://jenkins-compose.delivery.puppetlabs.net/github-webhook/': ;
-    'https://jenkins-enterprise.delivery.puppetlabs.net/github-webhook/': ;
-    'https://jenkins-imaging.delivery.puppetlabs.net/github-webhook/': ;
-    'https://jenkins-modules-dev.delivery.puppetlabs.net/github-webhook/': ;
-    'https://jenkins-modules.puppetlabs.com/github-webhook/': ;
-    'https://jenkins-perf.delivery.puppetlabs.net/github-webhook/': ;
-    'https://jenkins-release.delivery.puppetlabs.net/github-webhook/': ;
-    'https://jenkins-staging.delivery.puppetlabs.net/github-webhook/': ;
-    'https://jenkins.puppetlabs.com/github-webhook/': ;
-    'https://jenkins-qe.delivery.puppetlabs.net/github-webhook/': ;
-    'https://jenkins-cinext.delivery.puppetlabs.net/github-webhook/': ;
+  # Endpoints for Jenkins instances
+  [
+    'jenkins.ops.puppetlabs.net',
+    'jenkins-beaker.delivery.puppetlabs.net',
+    'jenkins-compose.delivery.puppetlabs.net',
+    'jenkins-enterprise.delivery.puppetlabs.net',
+    'jenkins-imaging.delivery.puppetlabs.net',
+    'jenkins-modules-dev.delivery.puppetlabs.net',
+    'jenkins-modules.puppetlabs.com',
+    'jenkins-perf.delivery.puppetlabs.net',
+    'jenkins-release.delivery.puppetlabs.net',
+    'jenkins-staging.delivery.puppetlabs.net',
+    'jenkins.puppetlabs.com',
+    'jenkins-qe.delivery.puppetlabs.net',
+    'jenkins-cinext.delivery.puppetlabs.net',
+  ].each |$host| {
+    profile::webhook::endpoint {
+      # Handle pushes to a branch
+      "https://${host}/github-webhook/": ;
+      # Handle changes to a PR
+      "https://${host}/ghprbhook/": ;
+    }
   }
 }
