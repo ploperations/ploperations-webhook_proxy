@@ -73,4 +73,9 @@ class profile::webhook::proxy (
       "https://${host}/ghprbhook/": ;
     }
   }
+
+  profile::webhook::endpoint {
+    # GitHub mirror
+    "https://github-mirror.ops.puppetlabs.net/github-webhook/": ;
+  }
 }
