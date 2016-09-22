@@ -66,7 +66,7 @@ class profile::webhook::proxy (
     'jenkins-qe.delivery.puppetlabs.net',
     'jenkins-cinext.delivery.puppetlabs.net',
     'jenkins-master01-blueocean-dev.delivery.puppetlabs.net',
-    'jenkins-platform.puppetlabs.com',
+    'jenkins-master-prod-1.delivery.puppetlabs.net',
   ].each |$host| {
     profile::webhook::endpoint {
       # Handle pushes to a branch
