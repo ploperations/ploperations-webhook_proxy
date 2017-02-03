@@ -76,6 +76,13 @@ class profile::webhook::proxy (
     }
   }
 
+  # Endpoints for Code Manager
+  ['yoda.puppetlabs.com'].each |$host| {
+    profile::webhook::endpoint {
+      "https://${host}:8170/code-manager/v1/webhook/": ;
+    }
+  }
+
   profile::webhook::endpoint {
     # GitHub mirror
     "https://github-mirror.ops.puppetlabs.net/github-webhook/": ;
