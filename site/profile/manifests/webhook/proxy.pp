@@ -86,7 +86,5 @@ class profile::webhook::proxy (
   profile::webhook::endpoint {
     # GitHub mirror
     "https://github-mirror.ops.puppetlabs.net/github-webhook/": ;
-    # Endpoints for On Premise OpenShift
-    "https://console-test.vsphere.openshift.puppet.net/": ;
   }
 }
