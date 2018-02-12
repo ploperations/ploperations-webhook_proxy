@@ -53,14 +53,12 @@ class profile::webhook::proxy (
   # Endpoints for Jenkins instances
   [
     'jenkins.ops.puppetlabs.net',
-    'jenkins-beaker.delivery.puppetlabs.net',
     'jenkins-compose.delivery.puppetlabs.net',
     'jenkins-imaging.delivery.puppetlabs.net',
     'jenkins-perf.delivery.puppetlabs.net',
     'jenkins-release.delivery.puppetlabs.net',
     'jenkins-staging.delivery.puppetlabs.net',
     'jenkins.puppetlabs.com',
-    'jenkins-qe.delivery.puppetlabs.net',
     'jenkins-cinext.delivery.puppetlabs.net',
     'jenkins-master01-blueocean-dev.delivery.puppetlabs.net',
     'jenkins-master-prod-1.delivery.puppetlabs.net',
