@@ -2,6 +2,27 @@
 class profile::webhook::proxy (
   String[1] $canonical_fqdn = $facts['fqdn'],
 ) {
+  profile::metadata::service { $title:
+    human_name        => 'GitHub webhook proxy',
+    owner_uid         => 'daniel.parks',
+    team              => infracore,
+    end_users         => ['discuss-sre@puppet.com'],
+    escalation_period => '24x7',
+    downtime_impact   => "Internal services aren't notfied about repo changes.",
+    other_fqdns       => ['webhook.puppet.com'],
+    notes             => @("NOTES"),
+      This allows Github webhooks to access our internal servers. For example:
+
+      ~~~ puppet
+      profile::webhook::endpoint { 'https://jenkins.puppetlabs.com/github-webhook/': }
+      ~~~
+
+      Creates a webhook proxy so that GitHub can send notifications to the
+      internal Ops Jenkins. The external URL will be
+      `https://webhook.puppet.com/jenkins.puppetlabs.com/github-webhook/`.
+      |-NOTES
+  }
+
   if $::profile::server::params::fw {
     include ::profile::fw::https
   }
