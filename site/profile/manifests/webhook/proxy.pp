@@ -78,7 +78,6 @@ class profile::webhook::proxy (
     'jenkins-imaging.delivery.puppetlabs.net',
     'jenkins-perf.delivery.puppetlabs.net',
     'jenkins-release.delivery.puppetlabs.net',
-    'jenkins-staging.delivery.puppetlabs.net',
     'jenkins.puppetlabs.com',
     'jenkins-cinext.delivery.puppetlabs.net',
     'jenkins-master01-blueocean-dev.delivery.puppetlabs.net',
