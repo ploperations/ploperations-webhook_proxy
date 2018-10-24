@@ -46,8 +46,8 @@ class profile::webhook::proxy (
     use_default_location => false,
     client_max_body_size => '10M',
     format_log           => 'logstash_json',
-    access_log           => "/var/log/nginx/webhook.access.log",
-    error_log            => "/var/log/nginx/webhook.error.log",
+    access_log           => '/var/log/nginx/webhook.access.log',
+    error_log            => '/var/log/nginx/webhook.error.log',
     vhost_cfg_append     => {
       error_page             => '502 503 504 /puppet-private-maintenance.html',
       proxy_intercept_errors => 'on',
@@ -98,6 +98,6 @@ class profile::webhook::proxy (
     'https://pe-mom1-prod.ops.puppetlabs.net:8170/code-manager/v1/webhook': ;
     'https://pe-mom2-test.ops.puppetlabs.net:8170/code-manager/v1/webhook': ;
     # GitHub mirror
-    "https://github-mirror.ops.puppetlabs.net/github-webhook/": ;
+    'https://github-mirror.ops.puppetlabs.net/github-webhook/': ;
   }
 }
