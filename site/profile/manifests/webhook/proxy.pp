@@ -83,7 +83,6 @@ class profile::webhook::proxy (
     'cinext-jenkinsmaster-enterprise-prod-1.delivery.puppetlabs.net',
     'cinext-jenkinsmaster-sre-prod-1.delivery.puppetlabs.net',
     'jenkins-sre.delivery.puppetlabs.net',
-    'opsci-jenkins-prod-1.ops.puppetlabs.net'
   ].each |$host| {
     profile::webhook::endpoint {
       # Handle pushes to a branch
