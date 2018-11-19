@@ -1,6 +1,6 @@
 # Proxy external webhook endpoints to internal hosts
 class profile::webhook::proxy (
-  String[1] $canonical_fqdn = $facts['fqdn'],
+  String[1] $canonical_fqdn = $facts['networking']['fqdn'],
 ) {
   profile::metadata::service { $title:
     human_name        => 'GitHub webhook proxy',
