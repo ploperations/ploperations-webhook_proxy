@@ -24,10 +24,10 @@ class profile::webhook::proxy (
   }
 
   if $::profile::server::params::fw {
-    include ::profile::fw::https
+    include profile::fw::https
   }
 
-  include ::profile::nginx
+  include profile::nginx
 
   profile::nginx::redirect { 'default':
     destination => "https://${canonical_fqdn}",
