@@ -35,14 +35,17 @@ class profile::webhook::proxy (
     ssl         => true,
   }
 
-  $ssl = profile::ssl::host_info($canonical_fqdn)
+  include ssl
+
+  ssl::cert { 'webhook.puppet.com': }
+
   nginx::resource::vhost { 'webhook':
     server_name          => [$canonical_fqdn],
     spdy                 => 'on',
     listen_port          => '443',
     ssl                  => true,
-    ssl_cert             => $ssl['cert'],
-    ssl_key              => $ssl['key'],
+    ssl_cert             => '/etc/ssl/certs/webhook.puppet.com_combined.crt',
+    ssl_key              => '/etc/ssl/private/webhook.puppet.com.key',
     use_default_location => false,
     client_max_body_size => '10M',
     format_log           => 'logstash_json',
