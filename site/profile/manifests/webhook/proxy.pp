@@ -101,7 +101,5 @@ class profile::webhook::proxy (
     'https://puppet.ops.puppetlabs.net:8170/code-manager/v1/webhook': ;
     'https://pe-mom2-test.ops.puppetlabs.net:8170/code-manager/v1/webhook': ;
     'http://cd4pe.ops.puppetlabs.net:8000/github/push': ;
-    # GitHub mirror
-    'https://github-mirror.ops.puppetlabs.net/github-webhook/': ;
   }
 }
