@@ -78,7 +78,6 @@ class profile::webhook::proxy (
   [
     'jenkins.ops.puppetlabs.net',
     'jenkins-compose.delivery.puppetlabs.net',
-    'jenkins-imaging.delivery.puppetlabs.net',
     'jenkins-release.delivery.puppetlabs.net',
     'jenkins.puppetlabs.com',
     'jenkins-cinext.delivery.puppetlabs.net',
