@@ -39,13 +39,19 @@ class profile::webhook::proxy (
 
   ssl::cert { 'webhook.puppet.com': }
 
+  if $facts['classification']['stage'] == 'prod' {
+    $ssl_name = 'webhook.puppet.com'
+  } else {
+    $ssl_name = 'wildcard.ops.puppetlabs.net'
+  }
+
   nginx::resource::vhost { 'webhook':
     server_name          => [$canonical_fqdn],
     spdy                 => 'on',
     listen_port          => '443',
     ssl                  => true,
-    ssl_cert             => '/etc/ssl/certs/webhook.puppet.com_combined.crt',
-    ssl_key              => '/etc/ssl/private/webhook.puppet.com.key',
+    ssl_cert             => "${ssl::cert_dir}/${ssl_name}_combined.crt",
+    ssl_key              => "${ssl::key_dir}/${ssl_name}.key",
     use_default_location => false,
     client_max_body_size => '10M',
     format_log           => 'logstash_json',
