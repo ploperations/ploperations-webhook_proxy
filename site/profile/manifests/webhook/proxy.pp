@@ -108,5 +108,7 @@ class profile::webhook::proxy (
     'https://puppet.ops.puppetlabs.net:8170/code-manager/v1/webhook': ;
     'https://pe-mom2-test.ops.puppetlabs.net:8170/code-manager/v1/webhook': ;
     'http://cd4pe.ops.puppetlabs.net:8000/github/push': ;
+    # Atlantis Endpoint
+    'http://forge-ci-prod-1.ops.puppetlabs.net:4141/events':;
   }
 }
