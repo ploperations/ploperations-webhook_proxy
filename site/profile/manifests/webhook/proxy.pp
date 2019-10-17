@@ -106,8 +106,10 @@ class profile::webhook::proxy (
     # Code Manager
     'https://yoda.puppetlabs.com:8170/code-manager/v1/webhook/': ;
     'https://puppet.ops.puppetlabs.net:8170/code-manager/v1/webhook': ;
-    'https://pe-mom2-test.ops.puppetlabs.net:8170/code-manager/v1/webhook': ;
-    'http://cd4pe.ops.puppetlabs.net:8000/github/push': ;
+    'https://puppet-infranext-prod.infc-aws.puppet.net:8170/code-manager/v1/webhook': ;
+    'https://puppet-infranext-test.infc-aws.puppet.net:8170/code-manager/v1/webhook': ;
+    'http://pe-cd4pe-infranext-prod-1.infc-aws.puppet.net:8000/github/push': ;
+    'http://pe-cd4pe-infranext-test-1.infc-aws.puppet.net:8000/github/push': ;
     # Atlantis Endpoint
     'http://forge-ci-prod-1.ops.puppetlabs.net:4141/events':;
   }
