@@ -110,6 +110,8 @@ class profile::webhook::proxy (
     'https://pe-infranext-test.infc-aws.puppet.net:8170/code-manager/v1/webhook': ;
     'http://pe-cd4pe-infranext-prod-1.infc-aws.puppet.net:8000/github/push': ;
     'http://pe-cd4pe-infranext-test-1.infc-aws.puppet.net:8000/github/push': ;
+    # Argo CD
+    'https://argocd.k8s.infracore.puppet.net/api/webhook': ;
     # Atlantis Endpoint
     'http://forge-ci-prod-1.ops.puppetlabs.net:4141/events':;
   }
