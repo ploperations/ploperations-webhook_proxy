@@ -45,10 +45,10 @@ class profile::webhook::proxy (
     $ssl_name = 'wildcard.ops.puppetlabs.net'
   }
 
-  nginx::resource::vhost { 'webhook':
+  nginx::resource::server { 'webhook':
     server_name          => [$canonical_fqdn],
     spdy                 => 'on',
-    listen_port          => '443',
+    listen_port          => 443,
     ssl                  => true,
     ssl_cert             => "${ssl::cert_dir}/${ssl_name}_combined.crt",
     ssl_key              => "${ssl::key_dir}/${ssl_name}.key",
@@ -57,14 +57,14 @@ class profile::webhook::proxy (
     format_log           => 'logstash_json',
     access_log           => '/var/log/nginx/webhook.access.log',
     error_log            => '/var/log/nginx/webhook.error.log',
-    vhost_cfg_append     => {
+    server_cfg_append    => {
       error_page             => '502 503 504 /puppet-private-maintenance.html',
       proxy_intercept_errors => 'on',
     },
   }
 
   nginx::resource::location { 'webhook __maintenance':
-    vhost    => 'webhook',
+    server   => 'webhook',
     ssl      => true,
     ssl_only => true,
     location => '= /puppet-private-maintenance.html',
@@ -73,11 +73,11 @@ class profile::webhook::proxy (
   }
 
   nginx::resource::location { 'webhook /':
-      vhost               => 'webhook',
-      ssl                 => true,
-      ssl_only            => true,
-      location            => '/',
-      location_custom_cfg => { 'return' => '404' },
+    server              => 'webhook',
+    ssl                 => true,
+    ssl_only            => true,
+    location            => '/',
+    location_custom_cfg => { 'return' => '404' },
   }
 
   # Endpoints for Jenkins instances
