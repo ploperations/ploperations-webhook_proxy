@@ -9,7 +9,7 @@ define profile::webhook::endpoint (
   Pattern[/^https?:\/\/\w.+\//] $target = $name,
 ) {
   nginx::resource::location { "webhook = ${path}":
-    vhost            => 'webhook',
+    server           => 'webhook',
     ssl              => true,
     ssl_only         => true,
     location         => "= ${path}",
