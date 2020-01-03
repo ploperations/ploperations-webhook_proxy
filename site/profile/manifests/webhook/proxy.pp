@@ -2,7 +2,7 @@
 class profile::webhook::proxy (
   String[1] $canonical_fqdn = $facts['networking']['fqdn'],
 ) {
-  profile::metadata::service { $title:
+  profile_metadata::service { $title:
     human_name        => 'GitHub webhook proxy',
     owner_uid         => 'daniel.parks',
     team              => infracore,
