@@ -1,5 +1,5 @@
 # Proxy external webhook endpoints to internal hosts
-class profile::webhook::proxy (
+class webhook_proxy (
   String[1] $canonical_fqdn = $facts['networking']['fqdn'],
 ) {
   profile_metadata::service { $title:

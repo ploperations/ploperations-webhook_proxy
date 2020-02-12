@@ -4,7 +4,7 @@
 # generate a path in the form `/$hostname/$url`. For example, the name
 # `'https://jenkins.ops.puppetlabs.net/github-webhook/'` will result in
 # an external endpoint path of `/jenkins.ops.puppetlabs.net/github-webhook/`.
-define profile::webhook::endpoint (
+define webhook_proxy::endpoint (
   Pattern[/^\//] $path = $name.regsubst('^https?://', '/').regsubst('/*$', '/'),
   Pattern[/^https?:\/\/\w.+\//] $target = $name,
 ) {
