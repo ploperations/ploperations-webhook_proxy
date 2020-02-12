@@ -1,4 +1,35 @@
+# @summary Proxy external webhook endpoints to internal hosts
+#
 # Proxy external webhook endpoints to internal hosts
+#
+# @param [Stdlib::Fqdn] cert_fqdn
+#   The FQDN of the certificate to be used by the proxy
+#
+# @param [Array[Stdlib::Fqdn]] jenkins_fqdns
+#   An array of FQDN's of Jenkins instances that need to receive
+#   webhooks from GitHub
+#
+# @param [Array[Stdlib::Http]] endpoints
+#   An array of url's that webhook will be able to be delivered to
+#
+# @param [String[1]] canonical_fqdn
+#   The FQDN to be used by Nginx as the server name.
+#
+# @param [String[1]] ssl_name
+#   The FQDN of the associated cert. Genrally this is the same as
+#   `$cert_fqdn` but may also be something like `wildcard.example.com`
+#   when you are using a wildcard cert to cover `webhooks.example.com`.
+#
+# @example Proxy a Jenkins server, Code Manager, and CD4PE
+#   class { 'webhook_proxy':
+#     cert_fqdn     => 'webhook.example.com',
+#     jenkins_fqdns => [ 'jenkins.internal.example.com' ],
+#     endpoints     => [
+#       'https://pe-prod.internal.example.com:8170/code-manager/v1/webhook',
+#       'http://cd4pe-prod.internal.example.com:8000/github/push',
+#     ],
+#   }
+#
 class webhook_proxy (
   Stdlib::Fqdn $cert_fqdn,
   Array[Stdlib::Fqdn] $jenkins_fqdns = [],

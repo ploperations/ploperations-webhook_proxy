@@ -1,9 +1,20 @@
-# An external webhook endpoint
+# @summary An external webhook endpoint
 #
 # If name is set to the internal webhook endpoint, this will automatically
 # generate a path in the form `/$hostname/$url`. For example, the name
-# `'https://jenkins.ops.puppetlabs.net/github-webhook/'` will result in
-# an external endpoint path of `/jenkins.ops.puppetlabs.net/github-webhook/`.
+# `'https://foo.internal.example.com/github-webhook/'` will result in
+# an external endpoint path of `/foo.internal.example.com/github-webhook/`.
+#
+# @param [Pattern[/^\//]] path
+#   The location, or path under this proxy's fqdn, that will have data sent to it
+#   for the given target
+#
+# @param [Pattern[/^https?:\/\/\w.+\//]] target
+#   The internal destination for the traffic
+#
+# @example Send webhooks to Code Manager
+#   webhook_proxy::endpoint { 'https://pe-prod.internal.example.com:8170/code-manager/v1/webhook': }
+#
 define webhook_proxy::endpoint (
   Pattern[/^\//] $path = $name.regsubst('^https?://', '/').regsubst('/*$', '/'),
   Pattern[/^https?:\/\/\w.+\//] $target = $name,
