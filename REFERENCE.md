@@ -23,7 +23,7 @@ Proxy external webhook endpoints to internal hosts
 
 ```puppet
 class { 'webhook_proxy':
-  cert_fqdn => 'webhook.example.com',
+  cert_fqdn     => 'webhook.example.com',
   jenkins_fqdns => [ 'jenkins.internal.example.com' ],
   endpoints     => [
     'https://pe-prod.internal.example.com:8170/code-manager/v1/webhook',
