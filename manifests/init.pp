@@ -33,7 +33,7 @@
 class webhook_proxy (
   Stdlib::Fqdn $cert_fqdn,
   Array[Stdlib::Fqdn] $jenkins_fqdns = [],
-  Array[Stdlib::Http] $endpoints = [],
+  Array[Stdlib::Httpurl] $endpoints = [],
   String[1] $canonical_fqdn = $facts['networking']['fqdn'],
   String[1] $ssl_name = $cert_fqdn,
 ) {
