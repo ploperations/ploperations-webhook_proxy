@@ -19,6 +19,8 @@ define webhook_proxy::endpoint (
   Pattern[/^\//] $path = $name.regsubst('^https?://', '/').regsubst('/*$', '/'),
   Pattern[/^https?:\/\/\w.+\//] $target = $name,
 ) {
+  include nginx
+
   nginx::resource::location { "webhook = ${path}":
     server           => 'webhook',
     ssl              => true,
