@@ -32,6 +32,50 @@ class { 'webhook_proxy':
 }
 ```
 
+##### A profile that provides additional configuration for Nginx
+
+```puppet
+class profile::webhook::proxy (
+  String[1] $canonical_fqdn = $facts['networking']['fqdn'],
+) {
+  include profile::nginx
+
+  profile::nginx::redirect { 'default':
+    destination => "https://${canonical_fqdn}",
+    default     => true,
+    ssl         => true,
+  }
+
+  class { 'webhook_proxy':
+    cert_fqdn         => 'webhook.example.com',
+    jenkins_fqdns     => [
+      'jenkins-prod.internal.example.com',
+      'jenkins-test.internal.example.com',
+    ],
+    endpoints         => [
+      'https://pe-prod.internal.example.com:8170/code-manager/v1/webhook',
+      'http://cd4pe-prod.internal.example.com:8000/github/push',
+    ],
+    canonical_fqdn    => $canonical_fqdn,
+    format_log        => 'logstash_json',
+    server_cfg_append => {
+      error_page             => '502 503 504 /private-maintenance.html',
+      proxy_intercept_errors => 'on',
+    },
+    ssl_name          => 'webhook.example.com',
+  }
+
+  nginx::resource::location { 'webhook __maintenance':
+    server   => 'webhook',
+    ssl      => true,
+    ssl_only => true,
+    location => '= /private-maintenance.html',
+    internal => true,
+    www_root => '/var/nginx/maintenance',
+  }
+}
+```
+
 #### Parameters
 
 The following parameters are available in the `webhook_proxy` class.
@@ -53,7 +97,7 @@ Default value: []
 
 ##### `endpoints`
 
-Data type: `Array[Stdlib::Http]`
+Data type: `Array[Stdlib::Httpurl]`
 
 An array of url's that webhook will be able to be delivered to
 
@@ -76,6 +120,23 @@ The FQDN of the associated cert. Genrally this is the same as
 when you are using a wildcard cert to cover `webhooks.example.com`.
 
 Default value: $cert_fqdn
+
+##### `format_log`
+
+Data type: `Optional[String[1]]`
+
+The log format to be passed through to `nginx::resource::server`
+
+Default value: `undef`
+
+##### `server_cfg_append`
+
+Data type: `Optional[Hash]`
+
+Any additional configuration you wish to passed through to
+`nginx::resource::server`
+
+Default value: `undef`
 
 ## Defined types
 

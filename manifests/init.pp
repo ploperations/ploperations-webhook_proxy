@@ -9,7 +9,7 @@
 #   An array of FQDN's of Jenkins instances that need to receive
 #   webhooks from GitHub
 #
-# @param [Array[Stdlib::Http]] endpoints
+# @param [Array[Stdlib::Httpurl]] endpoints
 #   An array of url's that webhook will be able to be delivered to
 #
 # @param [String[1]] canonical_fqdn
@@ -20,6 +20,13 @@
 #   `$cert_fqdn` but may also be something like `wildcard.example.com`
 #   when you are using a wildcard cert to cover `webhooks.example.com`.
 #
+# @param [Optional[String[1]]] format_log
+#   The log format to be passed through to `nginx::resource::server`
+#
+# @param [Optional[Hash]] server_cfg_append
+#   Any additional configuration you wish to passed through to
+#   `nginx::resource::server`
+#
 # @example Proxy a Jenkins server, Code Manager, and CD4PE
 #   class { 'webhook_proxy':
 #     cert_fqdn     => 'webhook.example.com',
@@ -28,6 +35,47 @@
 #       'https://pe-prod.internal.example.com:8170/code-manager/v1/webhook',
 #       'http://cd4pe-prod.internal.example.com:8000/github/push',
 #     ],
+#   }
+#
+# @example A profile that provides additional configuration for Nginx
+#   class profile::webhook::proxy (
+#     String[1] $canonical_fqdn = $facts['networking']['fqdn'],
+#   ) {
+#     include profile::nginx
+#
+#     profile::nginx::redirect { 'default':
+#       destination => "https://${canonical_fqdn}",
+#       default     => true,
+#       ssl         => true,
+#     }
+#
+#     class { 'webhook_proxy':
+#       cert_fqdn         => 'webhook.example.com',
+#       jenkins_fqdns     => [
+#         'jenkins-prod.internal.example.com',
+#         'jenkins-test.internal.example.com',
+#       ],
+#       endpoints         => [
+#         'https://pe-prod.internal.example.com:8170/code-manager/v1/webhook',
+#         'http://cd4pe-prod.internal.example.com:8000/github/push',
+#       ],
+#       canonical_fqdn    => $canonical_fqdn,
+#       format_log        => 'logstash_json',
+#       server_cfg_append => {
+#         error_page             => '502 503 504 /private-maintenance.html',
+#         proxy_intercept_errors => 'on',
+#       },
+#       ssl_name          => 'webhook.example.com',
+#     }
+#
+#     nginx::resource::location { 'webhook __maintenance':
+#       server   => 'webhook',
+#       ssl      => true,
+#       ssl_only => true,
+#       location => '= /private-maintenance.html',
+#       internal => true,
+#       www_root => '/var/nginx/maintenance',
+#     }
 #   }
 #
 class webhook_proxy (
