@@ -3,4 +3,14 @@
 ---
 fixtures:
   forge_modules:
-#     stdlib: "puppetlabs/stdlib"
+    apt: 'puppetlabs/apt' # required by nginx
+    concat: 'puppetlabs/concat' # required by nginx
+    nginx: 'puppet/nginx'
+    stdlib: 'puppetlabs/stdlib'
+    yumrepo_core: # required by nginx
+      repo: 'puppetlabs/yumrepo_core'
+      puppet_version: ">= 6.0.0"
+  repositories:
+    ssl:
+      repo: 'https://github.com/puppetlabs-operations/puppet-ssl'
+      ref: '22e27e00dbcfd152267dadace7c0a6eb67b2acb3'

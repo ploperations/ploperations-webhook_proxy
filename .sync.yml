@@ -1,0 +1,20 @@
+---
+.gitlab-ci.yml:
+  delete: true
+appveyor.yml:
+  delete: true
+Gemfile:
+  optional:
+    ':development':
+      - gem: 'github_changelog_generator'
+        version: '~> 1.15.0'
+      - gem: 'rspec-puppet-utils'
+        version: '~> 3.4'
+Rakefile:
+  changelog_version_tag_pattern: '%s'
+  requires:
+    - 'puppet-strings/tasks'
+spec/spec_helper.rb:
+  mock_with: ':rspec'
+  coverage_report: true
+  
