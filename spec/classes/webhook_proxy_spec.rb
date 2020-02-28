@@ -37,7 +37,7 @@ describe 'webhook_proxy' do
 
         it { is_expected.to compile }
         it { is_expected.to contain_nginx__resource__server('webhook').with_server_name(['webhook.example.com']) }
-        it { is_expected.to contain_ssl__cert('webhook.example.com')}
+        it { is_expected.to contain_ssl__cert('webhook.example.com') }
 
         it {
           is_expected.to contain_nginx__resource__location('webhook /')
@@ -70,7 +70,7 @@ describe 'webhook_proxy' do
         let(:params) do
           {
             'cert_fqdn'     => 'webhook.example.com',
-            'jenkins_fqdns' => [ 'jenkins.internal.example.com' ]
+            'jenkins_fqdns' => ['jenkins.internal.example.com'],
           }
         end
 
