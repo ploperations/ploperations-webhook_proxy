@@ -9,6 +9,10 @@
   "issues_url": "https://github.com/ploperations/ploperations-webhook_proxy/issues",
   "dependencies": [
     {
+      "name": "ploperations/ssl",
+      "version_requirement": ">= 1.0.0 < 2.0.0"
+    },
+    {
       "name": "puppet/nginx",
       "version_requirement": ">= 1.0.0 < 2.0.0"
     },
