@@ -94,7 +94,7 @@ class webhook_proxy (
 
   nginx::resource::server { 'webhook':
     server_name          => [$canonical_fqdn],
-    spdy                 => 'on',
+    http2                => 'on',
     listen_port          => 443,
     ssl                  => true,
     ssl_cert             => "${ssl::cert_dir}/${ssl_name}_combined.crt",
