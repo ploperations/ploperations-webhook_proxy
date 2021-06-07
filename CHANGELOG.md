@@ -2,9 +2,17 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [2.0.0](https://github.com/ploperations/ploperations-webhook_proxy/tree/2.0.0) (2021-06-07)
+
+[Full Changelog](https://github.com/ploperations/ploperations-webhook_proxy/compare/1.0.0...2.0.0)
+
+### Changed
+
+- \(maint\) replace spdy with http2 [\#6](https://github.com/ploperations/ploperations-webhook_proxy/pull/6) ([heathseals](https://github.com/heathseals))
+
 ## [1.0.0](https://github.com/ploperations/ploperations-webhook_proxy/tree/1.0.0) (2020-03-02)
 
-[Full Changelog](https://github.com/ploperations/ploperations-webhook_proxy/compare/268f5a77fb6dc31ec00a4d23a5058a0c2fb0fc87...1.0.0)
+[Full Changelog](https://github.com/ploperations/ploperations-webhook_proxy/compare/712c485caa9a7ce3d3a55064aabf8b19964a775b...1.0.0)
 
 
 
