@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [2.0.0](https://github.com/ploperations/ploperations-webhook_proxy/tree/2.0.0) (2021-06-07)
+## [2.0.0](https://github.com/ploperations/ploperations-webhook_proxy/tree/2.0.0) (2021-06-08)
 
 [Full Changelog](https://github.com/ploperations/ploperations-webhook_proxy/compare/1.0.0...2.0.0)
 
@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [1.0.0](https://github.com/ploperations/ploperations-webhook_proxy/tree/1.0.0) (2020-03-02)
 
-[Full Changelog](https://github.com/ploperations/ploperations-webhook_proxy/compare/712c485caa9a7ce3d3a55064aabf8b19964a775b...1.0.0)
+[Full Changelog](https://github.com/ploperations/ploperations-webhook_proxy/compare/be4d9abe176d233a594f6ea5193fb9d3743ba925...1.0.0)
 
 
 
