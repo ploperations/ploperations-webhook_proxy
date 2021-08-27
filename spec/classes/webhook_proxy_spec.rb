@@ -59,10 +59,10 @@ describe 'webhook_proxy' do
 
         it 'two endpoint resources are crated' do
           is_expected.to contain_webhook_proxy__endpoint('https://pe-prod.internal.example.com:8170/code-manager/v1/webhook')
-          is_expected.to contain_nginx__resource__location('webhook = /pe-prod.internal.example.com:8170/code-manager/v1/webhook/')
+          is_expected.to contain_nginx__resource__location('webhook = /pe-prod.internal.example.com:8170/code-manager/v1/webhook')
 
           is_expected.to contain_webhook_proxy__endpoint('http://cd4pe-prod.internal.example.com:8000/github/push')
-          is_expected.to contain_nginx__resource__location('webhook = /cd4pe-prod.internal.example.com:8000/github/push/')
+          is_expected.to contain_nginx__resource__location('webhook = /cd4pe-prod.internal.example.com:8000/github/push')
         end
       end
 
