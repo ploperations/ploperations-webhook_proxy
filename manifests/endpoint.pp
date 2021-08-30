@@ -16,7 +16,7 @@
 #   webhook_proxy::endpoint { 'https://pe-prod.internal.example.com:8170/code-manager/v1/webhook': }
 #
 define webhook_proxy::endpoint (
-  Pattern[/^\//] $path = $name.regsubst('^https?://', '/'),
+  Pattern[/^\//] $path = regsubst($name, '^https?://', '/'),
   Pattern[/^https?:\/\/\w.+\//] $target = $name,
 ) {
   include nginx
