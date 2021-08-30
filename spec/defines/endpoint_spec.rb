@@ -12,8 +12,8 @@ describe 'webhook_proxy::endpoint' do
 
         it { is_expected.to compile }
         it {
-          is_expected.to contain_nginx__resource__location('webhook = /pe-prod.internal.example.com:8170/code-manager/v1/webhook/')
-            .with_location('= /pe-prod.internal.example.com:8170/code-manager/v1/webhook/')
+          is_expected.to contain_nginx__resource__location('webhook = /pe-prod.internal.example.com:8170/code-manager/v1/webhook')
+            .with_location('= /pe-prod.internal.example.com:8170/code-manager/v1/webhook')
         }
       end
 
