@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [3.0.0](https://github.com/ploperations/ploperations-webhook_proxy/tree/3.0.0) (2021-08-30)
+
+[Full Changelog](https://github.com/ploperations/ploperations-webhook_proxy/compare/2.0.0...3.0.0)
+
+### Changed
+
+- \(DIO-2232\) Removes endpoint trailing / [\#10](https://github.com/ploperations/ploperations-webhook_proxy/pull/10) ([suckatrash](https://github.com/suckatrash))
+
 ## [2.0.0](https://github.com/ploperations/ploperations-webhook_proxy/tree/2.0.0) (2021-06-08)
 
 [Full Changelog](https://github.com/ploperations/ploperations-webhook_proxy/compare/1.0.0...2.0.0)
