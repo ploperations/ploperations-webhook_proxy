@@ -178,7 +178,7 @@ Data type: `Pattern[/^\//]`
 The location, or path under this proxy's fqdn, that will have data sent to it
 for the given target
 
-Default value: `('/*$', '/')`
+Default value: `regsubst($name, '^https?://', '/')`
 
 ##### <a name="target"></a>`target`
 
