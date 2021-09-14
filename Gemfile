@@ -24,8 +24,7 @@ group :development do
   gem "puppet-module-posix-dev-r#{minor_version}", '~> 1.0',                 require: false, platforms: [:ruby]
   gem "puppet-module-win-default-r#{minor_version}", '~> 1.0',               require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "puppet-module-win-dev-r#{minor_version}", '~> 1.0',                   require: false, platforms: [:mswin, :mingw, :x64_mingw]
-  gem "github_changelog_generator", '~> 1.15',                               require: false
-  gem "rspec-puppet-utils", '~> 3.4',                                        require: false
+  gem "github_changelog_generator", '~> 1.16', '>= 1.16.4',                  require: false
   gem "puppet-lint-absolute_classname-check", '~> 3.0',                      require: false
   gem "puppet-lint-absolute_template_path", '~> 1.0',                        require: false
   gem "puppet-lint-anchor-check", '~> 1.0',                                  require: false
@@ -47,6 +46,7 @@ group :development do
   gem "puppet-lint-unquoted_string-check", '~> 2.0',                         require: false
   gem "puppet-lint-variable_contains_upcase", '~> 1.2',                      require: false
   gem "puppet-lint-version_comparison-check", '~> 0.2',                      require: false
+  gem "rspec-puppet-utils", '~> 3.4',                                        require: false
 end
 group :system_tests do
   gem "puppet-module-posix-system-r#{minor_version}", '~> 1.0', require: false, platforms: [:ruby]
